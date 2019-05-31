@@ -33,6 +33,7 @@ def getLayer(overview, allWords):
     return layer
 
 if __name__ == "__main__":
+    print("#### Starting ####")
 
     with open('series_2000.json', encoding="utf8") as json_file:
         data = json.load(json_file)
