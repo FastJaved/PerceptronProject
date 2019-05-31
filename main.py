@@ -78,9 +78,6 @@ if __name__ == "__main__":
     print(ts_output)
 
     print("#### Training ####")
-
-    #perceptron.train(ts_input, ts_output, steps, lr) # train the perceptron
-
     start_time = time.time()
     perceptron.train(ts_input, ts_output)  # train the perceptron
     print("--- %s seconds ---" % (time.time() - start_time))
@@ -91,7 +88,6 @@ if __name__ == "__main__":
         results.append(trial)
     print("results")
     print(results)
-    print(np.ravel(np.rint(results)))
 
 
 
