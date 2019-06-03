@@ -3,15 +3,15 @@ import os
 
 import nltk
 
-#nltk.download('stopwords')
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 
-#nltk.download('wordnet')
+nltk.download('wordnet')
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.stem.porter import PorterStemmer
 
-#nltk.download('averaged_perceptron_tagger')
-#nltk.download('tagsets')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('tagsets')
 # Word cloud
 
 import re
