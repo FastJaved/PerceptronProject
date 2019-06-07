@@ -7,6 +7,7 @@ class Perceptron(object):
         self.learning_rate = learning_rate
         self.weights = np.zeros(no_of_inputs + 1)
         self.genre = ''
+        self.nbSeries = 0
 
     def predict(self, inputs):
         summation = self.getSummation(inputs)
@@ -27,8 +28,20 @@ class Perceptron(object):
         self.weights[0] += self.learning_rate * (label - prediction)
 
     def saveWeights(self):
-        with open('syn_weights_' + str(self.genre) + '.json', 'w') as outfile:
-            json.dump(self.weights.tolist(), outfile)
+        try:
+            with open('syn_weights_' + str(self.nbSeries) + '.json', 'r') as f:
+                data = json.load(f)
+        except:
+            data = []
+            dict = {str(self.genre): self.weights.tolist()}
+            data.append(dict)
+            with open('syn_weights_' + str(self.nbSeries) + '.json', 'w') as outfile:
+                json.dump(data, outfile)
+        else :
+            dict = {str(self.genre): self.weights.tolist()}
+            data.append(dict)
+            with open('syn_weights_' + str(self.nbSeries) + '.json', 'w') as outfile:
+                json.dump(data, outfile)
 
     def train(self, training_inputs, labels):
         count = 0

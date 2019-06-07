@@ -34,6 +34,8 @@ def getLayer(overview, allWords):
 
 if __name__ == "__main__":
     print("#### Starting ####")
+    nb_series = 2000
+    open("drama.json", 'a').close()
 
     with open('series_2000.json', encoding="utf8") as json_file:
         data = json.load(json_file)
@@ -52,10 +54,11 @@ if __name__ == "__main__":
 
     nbTests = 20
 
-    for i in genres:
+    for i in genres[:3]:
         print("### Genre : " + i)
         perceptron = Perceptron(len(allWords))
         perceptron.genre = i
+        perceptron.nbSeries = nb_series
         perceptrons.append(perceptron)
 
         inputs = []
