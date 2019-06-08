@@ -8,6 +8,7 @@ class Perceptron(object):
         self.weights = np.zeros(no_of_inputs + 1)
         self.genre = ''
         self.nbSeries = 0
+        self.score = 0
 
     def predict(self, inputs):
         summation = self.getSummation(inputs)
