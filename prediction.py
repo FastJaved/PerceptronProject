@@ -6,6 +6,7 @@ from tester import getTestResults
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def getPercentage(nbSuccess, nbTot):
     return nbSuccess * 100 / nbTot
@@ -29,11 +30,16 @@ def plotScores(perceptrons):
         y.append(perceptron.score)
 
     y_pos = np.arange(len(x))
-    plt.bar(y_pos, y, align='center', color='#7ed6df')
+
+    plt.bar(range(len(x)), y, align='center', color='#7ed6df')
+
     plt.xticks(y_pos, x, fontsize=5, rotation=30)
-    plt.ylabel('Score (in %)')
-    plt.xlabel('Genre')
+    plt.ylabel('Score (in %)', weight='bold', size='large')
+    plt.xlabel('Genre', weight='bold', size='large')
     plt.title('Score prediction per genre')
+
+    plt.ylim(ymin=np.amin(y) - 5, ymax=100)
+    plt.grid(True,which="both", linestyle='--')
     plt.show()
 
 nb_series = 20000
