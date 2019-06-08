@@ -35,9 +35,8 @@ def getLayer(overview, allWords):
 if __name__ == "__main__":
     print("#### Starting ####")
     nb_series = 2000
-    open("drama.json", 'a').close()
 
-    with open('series_2000.json', encoding="utf8") as json_file:
+    with open('series_' + str(nb_series) + '.json', encoding="utf8") as json_file:
         data = json.load(json_file)
 
     series = pd.DataFrame(data["series"])
@@ -45,11 +44,13 @@ if __name__ == "__main__":
     #print(tabulate(series[:10], headers='keys', tablefmt='psql'))
     #print(tabulate(target[:10], headers='keys', tablefmt='psql'))
 
-    with open('dictLucas.json', encoding="utf8") as json_file:
-        dict = json.load(json_file)
+    genres = ['Science Fiction', 'Fantasy', 'Drama', 'Action', 'Adventure', 'Comedy', 'Crime', 'Mystery', 'Family', 'War & Politics', 'Horror', 'Romance', 'Documentary', 'Reality', 'Western', 'Kids', 'News', 'Music', 'Talk', 'Soap', 'History']
 
-    genres = list(dict.keys())
     allWords = getAllWords(series['overview'])
+
+    with open('layer_order_' + str(nb_series) + '.json', 'w') as layer_order:
+        json.dump(allWords, layer_order)
+
     perceptrons = []
 
     nbTests = 20

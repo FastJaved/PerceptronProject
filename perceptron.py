@@ -2,8 +2,8 @@ import numpy as np
 import json
 
 class Perceptron(object):
-    def __init__(self, no_of_inputs, threshold=100, learning_rate=0.01):
-        self.threshold = threshold
+    def __init__(self, no_of_inputs, steps=100, learning_rate=0.01):
+        self.steps = steps
         self.learning_rate = learning_rate
         self.weights = np.zeros(no_of_inputs + 1)
         self.genre = ''
@@ -45,10 +45,10 @@ class Perceptron(object):
 
     def train(self, training_inputs, labels):
         count = 0
-        for _ in range(self.threshold):
+        for _ in range(self.steps):
             for inputs, label in zip(training_inputs, labels):
                 count += 1
-                print(str(self.getPercentage(count, self.threshold*len(training_inputs))) + '%')
+                print(str(self.getPercentage(count, self.steps * len(training_inputs))) + '%')
                 prediction = self.predict(inputs)
                 self.updateWeights(label, prediction, inputs)
         self.saveWeights()
