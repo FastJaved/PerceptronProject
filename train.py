@@ -36,9 +36,9 @@ def getLayer(overview, allWords):
 
 if __name__ == "__main__":
     print("#### Starting ####")
-    nb_series = 20000
+    nb_series = 10000 #TODO make it automatic
 
-    with open('series_' + str(nb_series) + '.json', encoding="utf8") as json_file:
+    with open('series_OMDB_plot.json', encoding="utf8") as json_file:
         data = json.load(json_file)
 
     series = pd.DataFrame(data["series"])
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     genres = ['Science Fiction', 'Fantasy', 'Drama', 'Action', 'Adventure', 'Comedy', 'Crime', 'Mystery', 'Family',
               'War & Politics', 'Horror', 'Romance', 'Documentary', 'Reality', 'Western', 'Kids', 'News', 'Music',
-              'Talk', 'Soap', 'History']
+              'Talk', 'Soap', 'History'] #TODO automatic list
 
     allWords = getAllWords(series['overview'])
 
@@ -57,37 +57,7 @@ if __name__ == "__main__":
 
     perceptrons = []
 
-    nbTests = 2000
-
-    # for i in genres:
-    #     print("### Genre : " + i)
-    #     perceptron = Perceptron(len(allWords))
-    #     perceptron.genre = i
-    #     perceptron.nbSeries = nb_series
-    #     perceptrons.append(perceptron)
-    #
-    #     inputs = []
-    #     outputs = []
-    #
-    #     print("#### Init data ####")
-    #
-    #     for x in range(nbTests, len(series)):
-    #         layer = getLayer(series['overview'][x], allWords)
-    #
-    #         inputs.append(layer)
-    #
-    #         if (perceptron.genre in series['genres'][x]):
-    #             outputs.append(1)
-    #         else:
-    #             outputs.append(0)
-    #
-    #     ts_input = np.array(inputs)
-    #     ts_output = np.array(outputs).T
-    #
-    #     print("#### Training ####")
-    #     start_time = time.time()
-    #     perceptron.train(ts_input, ts_output)  # train the perceptron
-    #     print("--- %s seconds ---" % (time.time() - start_time))
+    nbTests = 1500
 
     inputs = []
     for x in range(nbTests, len(series)):
