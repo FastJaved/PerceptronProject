@@ -119,6 +119,8 @@ with open('tests_1500_out_of_10000.json', encoding="utf8") as test_file:
 results = getTestResults(perceptrons, test_datas)
 print(results)
 
+#perceptrons.sort(key=lambda x: x.nbSeries, reverse=True)
+
 for perceptron in perceptrons:
     exp = []
     pred = []

@@ -2,7 +2,7 @@ import numpy as np
 import json
 
 class Perceptron(object):
-    def __init__(self, no_of_inputs, steps=200, learning_rate=0.01):
+    def __init__(self, no_of_inputs, steps=100, learning_rate=0.01):
         self.steps = steps
         self.learning_rate = learning_rate
         self.weights = np.zeros(no_of_inputs + 1)
